@@ -4,6 +4,7 @@ package stockanalyzer.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import stockanalyzer.ctrl.Controller;
 
@@ -13,21 +14,23 @@ public class UserInterface
 	private Controller ctrl = new Controller();
 
 	public void getDataFromCtrl1(){
-		ctrl.process("ABC");
+		ctrl.process("ABC;AAPL;SPY;AMZN");
 	}
 
 	public void getDataFromCtrl2(){
+		ctrl.process("IIA.VI;POST.VI;LNZ.VI;UQA.VI");
 	}
 
 	public void getDataFromCtrl3(){
-
+		ctrl.process("EBS.VI;DOC.VI;SBO.VI;RBI.VI");
 	}
 	public void getDataFromCtrl4(){
-
+		getDataForCustomInput();
 	}
 	
 	public void getDataForCustomInput() {
-		
+		Scanner sc = new Scanner(System.in);
+		ctrl.process(sc.next() + ";" + sc.next() + ";" + sc.next() + ";" + sc.next());
 	}
 
 
