@@ -1,5 +1,6 @@
 package stockanalyzer.ctrl;
 
+import stockanalyzer.downloader.Downloader;
 import yahooApi.YahooFinance;
 import yahooApi.beans.QuoteResponse;
 import yahooApi.beans.Result;
@@ -41,8 +42,16 @@ public class Controller {
 		* */
 		System.out.println("Highest value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).max().orElseThrow(null)); //Gets the highest value and prints it out
 		System.out.println("Average value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).average().orElseThrow(null)); //Gets the average value and prints it out
-		
+
 		return null;
+	}
+
+
+	/*
+	* Mit freundlicher Untertzützung von Mark Perov
+	* */
+	public void downloadAllTickers(List<String> tickers, Downloader downloader) {
+		downloader.process(tickers);
 	}
 
 

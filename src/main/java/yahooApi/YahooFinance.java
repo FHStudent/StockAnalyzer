@@ -27,7 +27,8 @@ public class YahooFinance {
         try {
             obj = new URL(query);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Link is invalid");
         }
         HttpURLConnection con = null;
         StringBuilder response = new StringBuilder();
@@ -40,7 +41,8 @@ public class YahooFinance {
             }
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("");
         }
         return response.toString();
     }
