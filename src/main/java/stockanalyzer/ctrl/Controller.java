@@ -45,7 +45,11 @@ public class Controller {
 			System.out.println("Highest value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).max().orElseThrow(null)); //Gets the highest value and prints it out
 			System.out.println("Average value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).average().orElseThrow(null)); //Gets the average value and prints it out
 		} catch(NullPointerException e) {
-			System.out.println("Cannot proceed with data processing.");
+			System.out.println("\n");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println("!Cannot proceed with data processing. Check your link and your internet connection and try again.!" + System.lineSeparator() +
+					"!If this error is encountered again, please contact your administrator for further advice.       !");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
 
 

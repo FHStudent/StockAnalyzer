@@ -25,7 +25,8 @@ public class ParallelDownloader extends Downloader {
 
             } catch (ExecutionException | InterruptedException e) {
 
-                throw new RuntimeException(e);
+                //throw new RuntimeException(e);
+                System.out.println("Several exceptions have occurred. Please contact your administrator.");
 
             }
         }

@@ -10,11 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import stockanalyzer.ctrl.Controller;
-import stockanalyzer.downloader.Downloader;
 import stockanalyzer.downloader.ParallelDownloader;
 import stockanalyzer.downloader.SequentialDownloader;
-import yahooApi.YahooFinance;
-import yahooApi.beans.YahooResponse;
 
 public class UserInterface 
 {
@@ -84,11 +81,13 @@ public class UserInterface
 			endingTime = System.currentTimeMillis();
 			timeToRunParallel = endingTime - startingTime;
 
-			System.out.println("The parallel downloader was " + (timeToRunSequential - timeToRunParallel) + " milliseconds faster than the sequential downloader");
+			System.out.println("\nThe parallel downloader was " + (timeToRunSequential - timeToRunParallel) + " milliseconds faster than the sequential downloader");
 
 		} catch (Exception e) {
 			//e.printStackTrace();
-			System.out.println(System.lineSeparator() + "An error occurred during the downloading process");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println("!An error occurred during the downloading process.!");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		}
 	}
 
@@ -119,6 +118,8 @@ public class UserInterface
 		try {
 			value = inReader.readLine();
 		} catch (IOException e) {
+			System.out.println("Cannot read input, please restart!");
+			return "-1";
 		}
 		return value.trim();
 	}

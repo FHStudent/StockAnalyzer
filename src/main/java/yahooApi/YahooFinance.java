@@ -28,7 +28,7 @@ public class YahooFinance {
             obj = new URL(query);
         } catch (MalformedURLException e) {
             //e.printStackTrace();
-            System.out.println("Link is invalid");
+            System.out.println("The given link is invalid or does not meet the URL standards.");
         }
         HttpURLConnection con = null;
         StringBuilder response = new StringBuilder();
@@ -42,7 +42,11 @@ public class YahooFinance {
             in.close();
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("Could not get input from given URL. The URL might be invalid.");
+            System.out.println();
+            System.out.println("??????????????????????????????????????????????????????????????????????????");
+            System.out.println("?This URL seems to be invalid, please check your URL entry and try again.?");
+            System.out.println("??????????????????????????????????????????????????????????????????????????");
+            System.out.println("\n");
         }
         return response.toString();
     }
@@ -83,7 +87,9 @@ public class YahooFinance {
              result  = objectMapper.readValue(jsonResponse, YahooResponse.class);
         } catch (JsonProcessingException e) {
             //e.printStackTrace();
-            System.out.println("An error occurred while processing the data.");
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            System.out.println("!An error occurred while processing the data. Maybe there is an invalid link?!");
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
         return result;
     }

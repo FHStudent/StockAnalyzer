@@ -30,13 +30,13 @@ public abstract class Downloader {
             writer.close();
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("Could not create and/or write to file");
+            System.out.println("Could not create and/or write to file.");
         } finally {
             try {
                 Objects.requireNonNull(writer).close();
             } catch (IOException e) {
                 //e.printStackTrace();
-                System.out.println("Could not create and/or write to file");
+                System.out.println("Could not create and/or write to file.");
             }
         }
         return fileName;
