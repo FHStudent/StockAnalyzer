@@ -12,7 +12,7 @@ public class SequentialDownloader extends Downloader {
             if(fileName != null) {
                 count++;
             } else {
-                System.out.println("An error occurred while trying to create " + ticker + ".");
+                System.out.println("An error occurred while trying to process " + ticker + ".");
             }
         }
         return count;

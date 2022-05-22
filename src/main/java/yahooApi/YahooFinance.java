@@ -42,7 +42,7 @@ public class YahooFinance {
             in.close();
         } catch (IOException e) {
             //e.printStackTrace();
-            System.out.println("");
+            System.out.println("Could not get input from given URL. The URL might be invalid.");
         }
         return response.toString();
     }
@@ -82,7 +82,8 @@ public class YahooFinance {
         try {
              result  = objectMapper.readValue(jsonResponse, YahooResponse.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("An error occurred while processing the data.");
         }
         return result;
     }

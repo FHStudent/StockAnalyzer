@@ -1,6 +1,7 @@
 package stockanalyzer.ctrl;
 
 import stockanalyzer.downloader.Downloader;
+import stockanalyzer.ui.UserInterface;
 import yahooApi.YahooFinance;
 import yahooApi.beans.QuoteResponse;
 import yahooApi.beans.Result;
@@ -29,19 +30,24 @@ public class Controller {
 		/*
 		* Mit freundlicher Unterstützung von Curt Schleritzko und Mathias Palfinger
 		* */
-		List<String> tickerString = Arrays.asList(searchString.split(";"));
-		YahooFinance yahooFinance = new YahooFinance();
-		YahooResponse yahooResponse = yahooFinance.getCurrentData(tickerString);
-		QuoteResponse quoteResponse = yahooResponse.getQuoteResponse();
+		try {
+			List<String> tickerString = Arrays.asList(searchString.split(";"));
+			YahooFinance yahooFinance = new YahooFinance();
+			YahooResponse yahooResponse = yahooFinance.getCurrentData(tickerString);
+			QuoteResponse quoteResponse = yahooResponse.getQuoteResponse();
 
-		quoteResponse.getResult().stream().forEach(quote -> System.out.println(quote.getSymbol() + ": " + quote.getAsk()));
-		System.out.println();
+			quoteResponse.getResult().stream().forEach(quote -> System.out.println(quote.getSymbol() + ": " + quote.getAsk()));
+			System.out.println();
 
-		/*
-		* Mit freundlicher Unterstützung von Curt Schleritzko und Mathias Palfinger (selbst modifiziert)
-		* */
-		System.out.println("Highest value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).max().orElseThrow(null)); //Gets the highest value and prints it out
-		System.out.println("Average value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).average().orElseThrow(null)); //Gets the average value and prints it out
+			/*
+			 * Mit freundlicher Unterstützung von Curt Schleritzko und Mathias Palfinger (selbst modifiziert)
+			 * */
+			System.out.println("Highest value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).max().orElseThrow(null)); //Gets the highest value and prints it out
+			System.out.println("Average value: " + quoteResponse.getResult().stream().mapToDouble(Result::getAsk).average().orElseThrow(null)); //Gets the average value and prints it out
+		} catch(NullPointerException e) {
+			System.out.println("Cannot proceed with data processing.");
+		}
+
 
 		return null;
 	}

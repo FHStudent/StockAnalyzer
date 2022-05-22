@@ -22,7 +22,5 @@ public class YahooAPIExample {
                 "WIE.VI","CAI.VI","BG.VI","POST.VI","LNZ.VI","UQA.VI","SPI.VI","ATS.VI","IIA.VI"));
         QuoteResponse quotes2 = response2.getQuoteResponse();
         quotes2.getResult().stream().forEach(quote -> System.out.println(quote.getShortName()+";"+quote.getAsk()+";"+quote.getBid()+" "+quote.getRegularMarketPreviousClose()));
-
-
     }
 }
